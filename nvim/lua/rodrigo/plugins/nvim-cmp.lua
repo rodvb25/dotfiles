@@ -6,14 +6,16 @@ if not cmp_status_ok then
 	return
 end
 
+-- Don't make neovim crash on initalization
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
 	return
 end
 
+-- Don't make neovim crash on initalization
 local lspkind_status, lspkind = pcall(require, "lspkind")
 if not lspkind_status then
-  return
+	return
 end
 
 local has_words_before = function()
@@ -24,31 +26,31 @@ end
 -- load friendly-snippets
 require("luasnip/loaders/from_vscode").lazy_load()
 
-local cmp = require'cmp'
+local cmp = require("cmp")
 
-cmp.setup{
-	
+cmp.setup({
+
 	--Snippet engine
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
 		end,
 	},
-	
+
 	window = {
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
-	
+
 	-- Key mapping
 	mapping = {
-		['<C-k>'] = cmp.mapping.select_prev_item(),
-		['<C-j>'] = cmp.mapping.select_next_item(),
-		['<C-b>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<C-e>'] = cmp.mapping.abort(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<C-k>"] = cmp.mapping.select_prev_item(),
+		["<C-j>"] = cmp.mapping.select_next_item(),
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -70,47 +72,54 @@ cmp.setup{
 			end
 		end, { "i", "s" }),
 	},
-	
+
 	-- Snippets sources
-	sources = cmp.config.sources ({
-		{ name = 'nvim_lsp' },
-		{ name = 'nvim_lua'},
-		{ name = 'luasnip' },
-		{ name = 'buffer' },
-		{ name = 'path'},
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "nvim_lua" },
+		{ name = "luasnip" },
+		{ name = "buffer" },
+		{ name = "path" },
+		{ name = "cmdline" },
 	}),
 
 	-- Show devicons as kind
 	formatting = {
-    format = lspkind.cmp_format({
-      maxwidth = 50,
-      ellipsis_char = "...",
-    })
+		format = lspkind.cmp_format({
+			maxwidth = 50,
+			ellipsis_char = "...",
+			menu = {
+				buffer = "[Buffer]",
+				nvim_lsp = "[LSP]",
+				luasnip = "[LuaSnip]",
+				nvim_lua = "[Lua]",
+			},
+		}),
 	},
 
-	-- 
+	--
 	view = {
-		entries = {name = 'custom', selection_order = 'near_cursor'}
+		entries = { name = "custom", selection_order = "near_cursor" },
 	},
-}
+})
 
 -- Use cmdline & path source for ':'
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
-		{ name = 'path' }
+		{ name = "path" },
 	}, {
-		{ name = 'cmdline' }
-	})
+		{ name = "cmdline" },
+	}),
 })
 
 -- Use buffer source for '/' and '?'
-cmp.setup.cmdline({ '/', '?' }, {
+cmp.setup.cmdline({ "/", "?" }, {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
-		{ name = 'buffer' }
-	}
+		{ name = "buffer" },
+	},
 })
 
 -- Enable Lsp completiom
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()

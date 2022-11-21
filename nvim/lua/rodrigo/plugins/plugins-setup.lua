@@ -59,7 +59,7 @@ return require("packer").startup(function(use)
 	use("neovim/nvim-lspconfig")
 	use("hrsh7th/cmp-nvim-lsp")
 	use({ "glepnir/lspsaga.nvim", branch = "main" })
-	use("onsails/lspkind.nvim")
+	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
 	-- Autocompletion
 	use("hrsh7th/nvim-cmp")
@@ -95,6 +95,9 @@ return require("packer").startup(function(use)
 
 	-- fuzzy finder
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
+
+	-- terminal
+	use({ "akinsho/toggleterm.nvim", tag = "*" })
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim")

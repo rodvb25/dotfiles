@@ -99,6 +99,9 @@ return require("packer").startup(function(use)
 	-- terminal
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
 
+	-- file exploree
+	use("nvim-tree/nvim-tree.lua")
+
 	-- git integration
 	use("lewis6991/gitsigns.nvim")
 

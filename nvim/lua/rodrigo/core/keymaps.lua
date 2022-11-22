@@ -51,4 +51,4 @@ keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>") -- show active buffe
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>") -- show help tags
 
 -- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", { silent = true, noremap = true })
+keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", { silent = true, noremap = true }) -- open or close the file explorer

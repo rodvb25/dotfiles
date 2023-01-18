@@ -13,14 +13,18 @@ if not mason_null_ls_status then
 	return
 end
 
-mason.setup()
+mason.setup({
+	ui = {
+		border = "rounded",
+		height = 0.8,
+	},
+})
 
 mason_lspconfig.setup({
 	ensure_installed = {
 		"html",
 		"cssls",
 		"sumneko_lua",
-		"quick_lint_js",
 		"eslint",
 		"emmet_ls",
 	},

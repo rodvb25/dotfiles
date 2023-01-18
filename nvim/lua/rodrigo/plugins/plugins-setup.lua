@@ -51,15 +51,15 @@ return require("packer").startup(function(use)
 	-- StatusLine
 	use("nvim-lualine/lualine.nvim")
 
-	-- managing & installing lsp servers
+	-- Managing & installing lsp servers
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 
-	-- configuring lsp servers
+	-- Configuring lsp servers
 	use("neovim/nvim-lspconfig")
 	use("hrsh7th/cmp-nvim-lsp")
 	use({ "glepnir/lspsaga.nvim", branch = "main" })
-	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+	use("onsails/lspkind.nvim") -- vscode like icons for autocompletion
 
 	-- Autocompletion
 	use("hrsh7th/nvim-cmp")
@@ -73,14 +73,14 @@ return require("packer").startup(function(use)
 	use("saadparwaiz1/cmp_luasnip")
 	use("rafamadriz/friendly-snippets")
 
-	-- formating & linting
+	-- Formating & linting
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("jayp0521/mason-null-ls.nvim")
 
 	-- Comments
 	use("numToStr/Comment.nvim")
 
-	-- treesitter
+	-- Threesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
@@ -89,20 +89,20 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- auto closing
+	-- Auto closing
 	use("windwp/nvim-autopairs")
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
 
-	-- fuzzy finder
+	-- Fuzzy finder
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
 
-	-- terminal
+	-- Terminal
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
 
-	-- file exploree
+	-- File exploree
 	use("nvim-tree/nvim-tree.lua")
 
-	-- git integration
+	-- Git integration
 	use("lewis6991/gitsigns.nvim")
 
 	if packer_bootstrap then

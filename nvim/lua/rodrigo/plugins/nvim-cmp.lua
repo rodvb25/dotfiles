@@ -19,14 +19,13 @@ if not lspkind_status then
 end
 
 local has_words_before = function()
+	unpack = unpack or table.unpack
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
 -- load friendly-snippets
 require("luasnip/loaders/from_vscode").lazy_load()
-
-local cmp = require("cmp")
 
 cmp.setup({
 
@@ -75,9 +74,9 @@ cmp.setup({
 
 	-- Snippets sources
 	sources = cmp.config.sources({
+		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
-		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "cmdline" },
@@ -86,7 +85,8 @@ cmp.setup({
 	-- Show devicons as kind
 	formatting = {
 		format = lspkind.cmp_format({
-			maxwidth = 50,
+			mode = "symbol_text",
+			maxwidth = 75,
 			ellipsis_char = "...",
 			menu = {
 				buffer = "[Buffer]",
@@ -123,3 +123,11 @@ cmp.setup.cmdline({ "/", "?" }, {
 
 -- Enable Lsp completiom
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+require("lspconfig")["html"].setup({
+	capabilities = capabilities,
+})
+
+require("lspconfig")["sumneko_lua"].setup({
+	capabilities = capabilities,
+})

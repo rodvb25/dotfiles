@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 toggleterm.setup({
-	open_mapping = [[<c-/>]],
+	open_mapping = [[<C-t>]],
 	direction = "float",
 	float_opts = {
 		border = "rounded",

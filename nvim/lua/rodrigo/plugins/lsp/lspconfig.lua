@@ -60,8 +60,3 @@ require("lspconfig")["rust_analyzer"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 })
-
-require("lspconfig")["quick_lint_js"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})

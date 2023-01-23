@@ -29,18 +29,22 @@ vim.opt.background = "dark"
 -- line wrapping
 vim.opt.wrap = false
 
--- search 
+-- search
 vim.opt.hlsearch = true
 
 -- file encoding
 vim.opt.fileencoding = "utf-8"
 
 -- autocomplete
-vim.opt.completeopt = {"menu","menuone","noselect"}
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
--- scroll 
+-- scroll
 vim.opt.scrolloff = 8
 
 -- split windows
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+--nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

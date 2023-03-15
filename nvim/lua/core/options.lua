@@ -35,9 +35,6 @@ vim.opt.hlsearch = true
 -- file encoding
 vim.opt.fileencoding = "utf-8"
 
--- autocomplete
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
-
 -- scroll
 vim.opt.scrolloff = 8
 

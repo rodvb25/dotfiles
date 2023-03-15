@@ -38,20 +38,3 @@ keymap("n", "<leader>to", ":tabnew<CR>") -- open new tab
 keymap("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 keymap("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 keymap("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
-
----------------------
--- Plugins keymaps
----------------------
-
--- telescope
-keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>") -- find files
-keymap("n", "<leader>fs", "<cmd>Telescope live_grep<CR>") -- find text
-keymap("n", "<leader>fc", "<cmd>Telescope grep_string<CR>") -- find current string the cursor is on
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<CR>") -- show active buffers
-keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>") -- show help tags
-
--- nvim-tree
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", { silent = true, noremap = true }) -- open or close the file explorer
-
--- Lspsaga
-keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>") -- go to definition

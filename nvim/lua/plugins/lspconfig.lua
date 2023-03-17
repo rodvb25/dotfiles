@@ -23,7 +23,15 @@ return {
       html = {},
       jsonls = {},
       tsserver = {},
-      lua_ls = {},
+      lua_ls = {
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = "Replace"
+            }
+          }
+        }
+      },
       rust_analyzer = {},
       bashls = {},
     },

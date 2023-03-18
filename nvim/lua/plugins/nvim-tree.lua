@@ -1,8 +1,8 @@
 return {
 	"nvim-tree/nvim-tree.lua",
-  keys = {
-    { "<leader>e", ":NvimTreeToggle<cr>", silent = true, noremap = true, desc = "Open/close NvimTree"}
-  },
+	keys = {
+		{ "<leader>e", ":NvimTreeToggle<cr>", silent = true, noremap = true, desc = "Open/close NvimTree" },
+	},
 	config = function()
 		require("nvim-tree").setup({
 			view = {
@@ -15,20 +15,20 @@ return {
 						{ key = "H", action = "collapse_all", action_cb = collapse_all },
 					},
 				},
-      },
+			},
 			actions = {
 				open_file = {
 					quit_on_open = true,
 				},
 			},
-      renderer = {
-        indent_markers = {
-          enable = true,
-        },
-      },
-      diagnostics = {
-        enable = true,
-      }
+			renderer = {
+				indent_markers = {
+					enable = true,
+				},
+			},
+			diagnostics = {
+				enable = true,
+			},
 		})
 	end,
 }

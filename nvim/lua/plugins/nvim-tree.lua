@@ -4,7 +4,7 @@ return {
 		{ "<leader>e", ":NvimTreeToggle<cr>", silent = true, noremap = true, desc = "Open/close NvimTree" },
 	},
 	config = function()
-		local HEIGHT_RATIO = 0.8
+		local HEIGHT_RATIO = 0.6
 		local WIDTH_RATIO = 0.5
 		require("nvim-tree").setup({
 			view = {

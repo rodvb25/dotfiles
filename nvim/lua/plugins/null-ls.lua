@@ -20,9 +20,10 @@ return {
 		nls.setup({
 			sources = {
 				nls.builtins.formatting.stylua,
-				nls.builtins.formatting.eslint,
-				nls.builtins.diagnostics.eslint,
+        nls.builtins.diagnostics.luacheck,
 				nls.builtins.completion.luasnip,
+				nls.builtins.formatting.eslint_d,
+				nls.builtins.diagnostics.eslint_d,
 				nls.builtins.code_actions.eslint_d,
 			},
 			on_attach = function(client, bufnr)

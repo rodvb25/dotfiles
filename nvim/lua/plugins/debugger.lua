@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
 		"jay-babu/mason-nvim-dap.nvim",
+		"jbyuki/one-small-step-for-vimkind",
 	},
 	config = function()
 		local dap = require("dap")
@@ -42,6 +43,17 @@ return {
 				},
 			},
 		})
+		-- setup one-small-step-for-vimkind (not possible with mason)
+		dap.configurations.lua = {
+			{
+				type = "nlua",
+				request = "attach",
+				name = "Attach to running Neovim instance",
+			},
+		}
+		dap.adapters.nlua = function(callback, config)
+			callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
+		end
 
 		dap.listeners.after.event_initialized["dapui_config"] = dapui.open
 		dap.listeners.before.event_terminated["dapui_config"] = dapui.close

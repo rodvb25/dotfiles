@@ -11,10 +11,11 @@ return {
 		{ "<bs>", desc = "Increment selection", mode = "x" },
 	},
 	opts = {
-		highlight = { enable = true },
-		indent = { enable = true },
-		autotag = { enable = true },
-		auto_install = { enable = true },
+		highlight = true,
+		sync_install = true,
+		indent = true,
+		autotag = true,
+		auto_install = true,
 		ensure_installed = {
 			"json",
 			"javascript",
@@ -22,6 +23,7 @@ return {
 			"html",
 			"css",
 			"markdown",
+			"markdown_inline",
 			"bash",
 			"lua",
 			"vim",

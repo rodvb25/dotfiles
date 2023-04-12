@@ -16,7 +16,7 @@ return {
 				"js-debug-adapter",
 			},
 		})
-		require("mason-nvim-dap").setup_handlers()
+		require("mason-nvim-dap").setup()
 
 		--Basic debugging keymaps
 		vim.keymap.set("n", "<F5>", dap.continue)

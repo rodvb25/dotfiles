@@ -1,6 +1,7 @@
 return {
 	"glepnir/lspsaga.nvim",
-	event = "BufRead",
+	event = "LspAttach",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		-- show definition, references
 		{ "gf", "<cmd>Lspsaga lsp_finder<CR>", noremap = true, silent = true, buffer = bufnr },
@@ -27,7 +28,9 @@ return {
 		-- see outline on right hand side
 		{ "<leader>o", "<cmd>LSoutlineToggle<CR>", noremap = true, silent = true, buffer = bufnr },
 	},
-	config = function()
-		require("lspsaga").setup({})
-	end,
+	opts = {
+		ui = {
+			border = "rounded",
+		},
+	},
 }

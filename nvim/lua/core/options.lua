@@ -24,7 +24,6 @@ vim.opt.clipboard = "unnamedplus"
 -- appearance
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
-vim.opt.background = "dark"
 
 -- line wrapping
 vim.opt.wrap = false

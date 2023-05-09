@@ -20,11 +20,14 @@ return {
 		nls.setup({
 			sources = {
 				nls.builtins.formatting.stylua,
-        nls.builtins.diagnostics.luacheck,
+				nls.builtins.diagnostics.luacheck,
 				nls.builtins.completion.luasnip,
 				nls.builtins.formatting.eslint_d,
 				nls.builtins.diagnostics.eslint_d,
 				nls.builtins.code_actions.eslint_d,
+				nls.builtins.formatting.clang_format,
+				nls.builtins.diagnostics.cmake_lint,
+				nls.builtins.formatting.cmake_format,
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then

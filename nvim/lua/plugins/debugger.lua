@@ -3,7 +3,16 @@ return {
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
 		"jay-babu/mason-nvim-dap.nvim",
-		"jbyuki/one-small-step-for-vimkind",
+	},
+	keys = {
+		{
+			"<leader>du",
+			function()
+				require("dapui").toggle({})
+			end,
+			noremap = true,
+			desc = "Dap UI",
+		},
 	},
 	config = function()
 		local dap = require("dap")
@@ -12,11 +21,10 @@ return {
 		require("mason-nvim-dap").setup({
 			automatic_setup = true,
 			ensure_installed = {
-				"netcoredbg",
-				"js-debug-adapter",
+				"cpptools",
 			},
+			handlers = {},
 		})
-		require("mason-nvim-dap").setup()
 
 		--Basic debugging keymaps
 		vim.keymap.set("n", "<F5>", dap.continue)
@@ -28,35 +36,14 @@ return {
 			dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
 		end)
 
-		dapui.setup({
-			icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
-			controls = {
-				icons = {
-					pause = "⏸",
-					play = "▶",
-					step_into = "⏎",
-					step_over = "⏭",
-					step_out = "⏮",
-					step_back = "b",
-					run_last = "▶▶",
-					terminate = "⏹",
-				},
-			},
-		})
-		-- setup one-small-step-for-vimkind (not possible with mason)
-		dap.configurations.lua = {
-			{
-				type = "nlua",
-				request = "attach",
-				name = "Attach to running Neovim instance",
-			},
-		}
-		dap.adapters.nlua = function(callback, config)
-			callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
+		dap.listeners.after.event_initialized["dapui_config"] = function()
+			dapui.open()
 		end
-
-		dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-		dap.listeners.before.event_exited["dapui_config"] = dapui.close
+		dap.listeners.before.event_terminated["dapui_config"] = function()
+			dapui.close()
+		end
+		dap.listeners.before.event_exited["dapui_config"] = function()
+			dapui.close()
+		end
 	end,
 }

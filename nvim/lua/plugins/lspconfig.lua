@@ -10,9 +10,10 @@ return {
 		diagnostic = {
 			underline = true,
 			update_in_insert = false,
-			virtual_text = { spacing = 4, prefix = "●" },
+			virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
 			severity_sort = true,
 		},
+		severity_sort = true,
 		autoformat = true,
 		format = {
 			formatting_options = nil,
@@ -23,33 +24,70 @@ return {
 			html = {},
 			jsonls = {},
 			tsserver = {},
-			lua_ls = {
-				settings = {
-					Lua = {
-						completion = {
-							callSnippet = "Replace",
+			lua_ls = {},
+			rust_analyzer = {},
+			bashls = {},
+			clangd = {},
+			cmake_language_server = {},
+		},
+		setup = {
+			lua_ls = function()
+				require("lua_ls").setup({
+					settings = {
+						Lua = {
+							runtime = {
+								version = "LuaJIT",
+							},
+							diagnostics = {
+								globals = { "vim" },
+							},
+							workspace = {
+								library = vim.api.nvim_get_runtime_file("", true),
+							},
+							telemetry = {
+								enable = false,
+							},
 						},
-						diagnostics = {
-							globals = { "vim" },
-						},
+					},
+				})
+			end,
+		},
+	},
+	config = function()
+		local lspconfig = require("lspconfig")
+		local lsp_defaults = lspconfig.util.default_config
+
+		lsp_defaults.capabilities =
+			vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+		lspconfig.cssls.setup({})
+		lspconfig.html.setup({})
+		lspconfig.jsonls.setup({})
+		lspconfig.tsserver.setup({})
+		lspconfig.lua_ls.setup({
+			settings = {
+				Lua = {
+					runtime = {
+						version = "LuaJIT",
+					},
+					diagnostics = {
+						globals = { "vim" },
+					},
+					workspace = {
+						library = vim.api.nvim_get_runtime_file("", true),
+					},
+					telemetry = {
+						enable = false,
 					},
 				},
 			},
-			rust_analyzer = {},
-			bashls = {},
-		},
-	},
-	config = function(opts)
-		require("lspconfig")["cssls"].setup({})
-		require("lspconfig")["html"].setup({})
-		require("lspconfig")["jsonls"].setup({})
-		require("lspconfig")["tsserver"].setup({})
-		require("lspconfig")["lua_ls"].setup({})
-		require("lspconfig")["rust_analyzer"].setup({})
-		require("lspconfig")["bashls"].setup({})
-
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+		})
+		lspconfig.rust_analyzer.setup({})
+		lspconfig.bashls.setup({})
+		lspconfig.clangd.setup({
+			capabilities = { offsetEncoding = "uft-8" },
+		})
+		lspconfig.cmake.setup({})
 
 		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 		for type, icon in pairs(signs) do

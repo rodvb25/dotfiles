@@ -4,17 +4,19 @@ return {
 	dependencies = {
 		"windwp/nvim-ts-autotag",
 	},
-	build = ":TSUpdate",
+	build = function()
+		require("nvim-treesitter.install").update({ with_sync = true })
+	end,
 	event = "BufReadPost",
 	keys = {
 		{ "<c-space>", desc = "Increment selection" },
 		{ "<bs>", desc = "Increment selection", mode = "x" },
 	},
 	opts = {
-		highlight = true,
+		highlight = { enable = true },
 		sync_install = true,
-		indent = true,
-		autotag = true,
+		indent = { enable = true },
+		autotag = { enable = true },
 		auto_install = true,
 		ensure_installed = {
 			"json",
@@ -31,6 +33,7 @@ return {
 			"rust",
 			"c",
 			"vimdoc",
+			"vala",
 		},
 		incremental_selection = {
 			enable = true,
@@ -42,10 +45,7 @@ return {
 			},
 		},
 	},
-	config = function(plugin, opts)
-		if plugin.ensure_installed then
-			require("lazy.util").deprecate("treesitter.ensure_installed", "treesitter.opts.ensure_installed")
-		end
+	config = function(_, opts)
 		require("nvim-treesitter.configs").setup(opts)
 	end,
 }

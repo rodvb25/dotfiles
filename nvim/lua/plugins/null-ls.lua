@@ -28,6 +28,7 @@ return {
 				nls.builtins.formatting.clang_format,
 				nls.builtins.diagnostics.cmake_lint,
 				nls.builtins.formatting.cmake_format,
+				nls.builtins.formatting.rustfmt,
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then

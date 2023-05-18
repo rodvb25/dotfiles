@@ -33,6 +33,7 @@ return {
 					ensure_installed = {
 						"cpptools",
 						"js",
+						"codelldb",
 					},
 					handlers = {},
 				})

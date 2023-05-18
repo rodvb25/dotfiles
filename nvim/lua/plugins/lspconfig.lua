@@ -88,6 +88,8 @@ return {
 			capabilities = { offsetEncoding = "uft-8" },
 		})
 		lspconfig.cmake.setup({})
+		lspconfig.lemminx.setup({})
+		lspconfig.vala_ls.setup({})
 
 		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 		for type, icon in pairs(signs) do

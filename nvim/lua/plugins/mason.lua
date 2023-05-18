@@ -7,11 +7,7 @@ return {
 	opts = {
 		automatic_installation = true,
 		ui = {
-			border = "rounded",
 			height = 0.8,
 		},
 	},
-	config = function(opts)
-		require("mason").setup(opts)
-	end,
 }

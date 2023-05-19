@@ -28,4 +28,7 @@ return {
 		-- see outline on right hand side
 		{ "<leader>o", "<cmd>LSoutlineToggle<CR>", noremap = true, silent = true, buffer = bufnr },
 	},
+	config = function()
+		require("lspsaga").setup()
+	end,
 }

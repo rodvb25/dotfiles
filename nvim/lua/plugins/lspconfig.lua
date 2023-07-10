@@ -53,7 +53,7 @@ return {
 			end,
 		},
 	},
-	config = function()
+	config = function(_, opts)
 		local lspconfig = require("lspconfig")
 		local lsp_defaults = lspconfig.util.default_config
 

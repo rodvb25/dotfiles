@@ -60,18 +60,19 @@ return {
 
 			-- Snippets sources
 			sources = cmp.config.sources({
-				{ name = "luasnip" },
 				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
 				{ name = "nvim_lua" },
 				{ name = "buffer" },
 				{ name = "path" },
 				{ name = "cmdline" },
 			}),
 
-			window = {
-				--completion = cmp.config.window.bordered(),
-				--documentation = cmp.config.window.bordered(),
-			},
+			-- window = {
+			-- 	--completion = cmp.config.window.bordered(),
+			-- 	--documentation = cmp.config.window.bordered(),
+			-- },
+
 			-- Show devicons as kind
 			formatting = {
 				format = require("lspkind").cmp_format({

@@ -21,13 +21,10 @@ return {
 			sources = {
 				nls.builtins.formatting.stylua,
 				nls.builtins.diagnostics.luacheck,
-				nls.builtins.completion.luasnip,
 				nls.builtins.formatting.eslint_d,
 				nls.builtins.diagnostics.eslint_d,
 				nls.builtins.code_actions.eslint_d,
 				nls.builtins.formatting.clang_format,
-				nls.builtins.diagnostics.cmake_lint,
-				nls.builtins.formatting.cmake_format,
 				nls.builtins.formatting.prettier,
 				nls.builtins.formatting.xmlformat,
 			},

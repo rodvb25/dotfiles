@@ -1,5 +1,5 @@
 return {
-	"glepnir/lspsaga.nvim",
+	"nvimdev/lspsaga.nvim",
 	event = "LspAttach",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
@@ -29,6 +29,10 @@ return {
 		{ "<leader>o", "<cmd>LSoutlineToggle<CR>", noremap = true, silent = true, buffer = bufnr },
 	},
 	config = function()
-		require("lspsaga").setup()
+		require("lspsaga").setup({
+			ui = {
+				border = "solid",
+			},
+		})
 	end,
 }

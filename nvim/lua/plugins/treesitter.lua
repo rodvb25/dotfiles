@@ -33,7 +33,7 @@ return {
 			"rust",
 			"c",
 			"vimdoc",
-			"vala",
+			"regex",
 		},
 		incremental_selection = {
 			enable = true,

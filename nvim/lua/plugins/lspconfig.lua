@@ -6,65 +6,35 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 	},
-	opts = {
-		diagnostic = {
-			underline = true,
-			update_in_insert = false,
-			virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
-			severity_sort = true,
-		},
-		severity_sort = true,
-		autoformat = true,
-		format = {
-			formatting_options = nil,
-			timeout_ms = nil,
-		},
-		servers = {
-			cssls = {},
-			html = {},
-			jsonls = {},
-			tsserver = {},
-			lua_ls = {},
-			rust_analyzer = {},
-			bashls = {},
-			clangd = {},
-			cmake_language_server = {},
-		},
-		setup = {
-			lua_ls = function()
-				require("lua_ls").setup({
-					settings = {
-						Lua = {
-							runtime = {
-								version = "LuaJIT",
-							},
-							diagnostics = {
-								globals = { "vim" },
-							},
-							workspace = {
-								library = vim.api.nvim_get_runtime_file("", true),
-							},
-							telemetry = {
-								enable = false,
-							},
-						},
-					},
-				})
-			end,
-		},
-	},
-	config = function(_, opts)
+	config = function()
 		local lspconfig = require("lspconfig")
-		local lsp_defaults = lspconfig.util.default_config
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local servers =
+			{ "cssls", "html", "tsserver", "jsonls", "lua_ls", "rust_analyzer", "bashls", "clangd", "cmake", "lemminx" }
 
-		lsp_defaults.capabilities =
-			vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
+		lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
+			severity_sort = true,
+			autoformat = true,
+			format = {
+				formatting_options = nil,
+				timeout_ms = nil,
+			},
+			diagnostic = {
+				underline = true,
+				update_in_insert = false,
+				virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
+				severity_sort = true,
+			},
+		})
 
-		lspconfig.cssls.setup({})
-		lspconfig.html.setup({})
-		lspconfig.jsonls.setup({})
-		lspconfig.tsserver.setup({})
+		for _, lsp in ipairs(servers) do
+			lspconfig[lsp].setup({
+				capabilities = capabilities,
+			})
+		end
+
 		lspconfig.lua_ls.setup({
+			capabilities = capabilities,
 			settings = {
 				Lua = {
 					runtime = {
@@ -82,14 +52,9 @@ return {
 				},
 			},
 		})
-		lspconfig.rust_analyzer.setup({})
-		lspconfig.bashls.setup({})
 		lspconfig.clangd.setup({
-			capabilities = { offsetEncoding = "uft-8" },
+			capabilities = { capabilities, offsetEncoding = "uft-8" },
 		})
-		lspconfig.cmake.setup({})
-		lspconfig.lemminx.setup({})
-		lspconfig.vala_ls.setup({})
 
 		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 		for type, icon in pairs(signs) do

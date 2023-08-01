@@ -37,6 +37,9 @@ return {
 			capabilities = capabilities,
 			settings = {
 				Lua = {
+          completion = { --neodev config
+            callSnippet = "Replace"
+          },
 					runtime = {
 						version = "LuaJIT",
 					},
@@ -45,15 +48,13 @@ return {
 					},
 					workspace = {
 						library = vim.api.nvim_get_runtime_file("", true),
+						checkThirdParty = false, --stop luassert question
 					},
 					telemetry = {
 						enable = false,
 					},
 				},
 			},
-		})
-		lspconfig.clangd.setup({
-			capabilities = { capabilities, offsetEncoding = "uft-8" },
 		})
 
 		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }

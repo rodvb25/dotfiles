@@ -1,19 +1,19 @@
 -- Setup nvim-cmp.
 return {
 	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
+  version = false,
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lua",
-		"hrsh7th/cmp-nvim-lsp",
 		"saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind.nvim",
 	},
 	opts = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
+
 		local has_words_before = function()
 			local unpack = unpack or table.unpack
 			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -21,9 +21,9 @@ return {
 		end
 
 		return {
-			completion = {
-				completeopt = "menu,menuone,noinsert",
-			},
+      completion = {
+        completeopt = "menu, menuone,noinsert",
+      },
 			snippet = {
 				expand = function(args)
 					require("luasnip").lsp_expand(args.body)
@@ -35,11 +35,11 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+				["<CR>"] = cmp.mapping.confirm({ select = true }), -- accept currently selected item. set `select` to `false` to only confirm explicitly selected items.
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
-					elseif luasnip.expand_or_jumpable() then
+					elseif luasnip.expand_or_locally_jumpable() then
 						luasnip.expand_or_jump()
 					elseif has_words_before() then
 						cmp.complete()

@@ -5,7 +5,16 @@ return {
 	dependencies = "williamboman/mason-lspconfig.nvim",
 	keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Mason" } },
 	opts = {
-		automatic_installation = true,
+    ensure_installed = {
+      "html-lsp",
+      "css-lsp",
+      "typescript-language-server",
+      "lua-language-server",
+      "eslint_d",
+      "luacheck",
+      "prettier",
+      "stylua"
+    },
 		ui = {
 			height = 0.8,
 		},

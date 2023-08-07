@@ -46,7 +46,7 @@ return {
 
 			vim.keymap.set("n", "l", edit_or_open, options("Edit Or Open"))
 			vim.keymap.set("n", "L", vsplit_preview, options("Vsplit Preview"))
-			vim.keymap.set("n", "h", api.tree.close, options("Close"))
+			vim.keymap.set("n", "h", api.node.navigate.parent_close, options("Close Directory"))
 			vim.keymap.set("n", "H", api.tree.collapse_all, options("Collapse All"))
 		end
 

@@ -5,9 +5,9 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	opts = {
-    presets = {
-      command_palette = true,
-    },
+    -- presets = {
+    --   command_palette = true,
+    -- },
 		lsp = {
 			override = {
 				["vim.lsp.util.convert_input_to_markdown_lines"] = true,

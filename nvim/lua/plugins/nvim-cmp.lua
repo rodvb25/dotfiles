@@ -1,7 +1,7 @@
 -- Setup nvim-cmp.
 return {
 	"hrsh7th/nvim-cmp",
-  version = false,
+	version = false,
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -9,6 +9,9 @@ return {
 		"hrsh7th/cmp-nvim-lua",
 		"saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind.nvim",
+		{ "windwp/nvim-autopairs", event = "InsertEnter", opts = {
+			check_ts = true,
+		} },
 	},
 	opts = function()
 		local cmp = require("cmp")
@@ -21,9 +24,9 @@ return {
 		end
 
 		return {
-      completion = {
-        completeopt = "menu, menuone,noinsert",
-      },
+			completion = {
+				completeopt = "menu, menuone,noinsert",
+			},
 			snippet = {
 				expand = function(args)
 					require("luasnip").lsp_expand(args.body)
@@ -35,8 +38,8 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
-				-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- accept currently selected item. set `select` to `false` to only confirm explicitly selected items.
-				["<Space>"] = cmp.mapping.confirm({ select = true }), -- accept currently selected item. set `select` to `false` to only confirm explicitly selected items.
+				["<CR>"] = cmp.mapping.confirm({ select = true }), -- accept currently selected item. set `select` to `false` to only confirm explicitly selected items.
+				-- ["<Space>"] = cmp.mapping.confirm({ select = true }), -- accept currently selected item. set `select` to `false` to only confirm explicitly selected items.
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()

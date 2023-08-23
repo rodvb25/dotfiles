@@ -31,7 +31,7 @@ return {
 	config = function()
 		require("lspsaga").setup({
 			ui = {
-				border = "solid",
+				border = "none",
 			},
 		})
 	end,

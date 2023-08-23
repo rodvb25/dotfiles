@@ -39,6 +39,14 @@ return {
 				})
 			end,
 		},
+		{
+			"folke/neodev.nvim",
+			config = function()
+				require("neodev").setup({
+					library = { plugins = { "nvim-dap-ui" }, types = true },
+				})
+			end,
+		},
 	},
   --stylua: ignore
 	keys = {
@@ -48,6 +56,6 @@ return {
 		{"<F2>", function() require("dap").step_over() end, desc = "Step Over"},
 		{"<F3>", function() require("dap").step_out() end, desc = "Step Out"},
 		{"<leader>b", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint"},
-		{"<leader>b", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, desc = "Breakpoint Condition"},
+		{"<leader>bc", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, desc = "Breakpoint Condition"},
 	},
 }

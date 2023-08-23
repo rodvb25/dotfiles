@@ -10,6 +10,6 @@ return {
 		ft("javascript,typescript,JSX"):fmt("prettier")
 		ft("c,c++"):fmt("clang-format")
 
-		require("guard").setup(opts)
+		require("guard").setup(_,opts)
 	end,
 }

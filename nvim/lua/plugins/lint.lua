@@ -4,6 +4,8 @@ return {
 		require("lint").linters_by_ft = {
 			lua = { "luacheck" },
 			javascript = { "eslint_d" },
+			c = { "cpplint" },
+			cpp = { "cpplint" },
 		}
 	end,
 }

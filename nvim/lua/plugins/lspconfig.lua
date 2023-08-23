@@ -2,8 +2,8 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"mason.nvim",
 		"hrsh7th/cmp-nvim-lsp",
+		"mason.nvim",
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -36,9 +36,9 @@ return {
 			capabilities = capabilities,
 			settings = {
 				Lua = {
-          completion = { --neodev config
-            callSnippet = "Replace"
-          },
+					completion = { --neodev config
+						callSnippet = "Replace",
+					},
 					runtime = {
 						version = "LuaJIT",
 					},

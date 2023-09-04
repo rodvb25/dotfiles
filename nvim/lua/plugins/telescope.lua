@@ -7,13 +7,6 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
-	keys = {
-		{ mode = "n", "<leader>ff", "<cmd>Telescope find_files<CR>", noremap = true, desc = "Find files" },
-		{ mode = "n", "<leader>fs", "<cmd>Telescope live_grep<CR>", noremap = true, desc = "Find text" },
-		{ mode = "n", "<leader>fc", "<cmd>Telescope grep_string<CR>", noremap = true, desc = "Find current string" },
-		{ mode = "n", "<leader>fb", "<cmd>Telescope buffers<CR>", noremap = true, desc = "Show active buffers" },
-		{ mode = "n", "<leader>fn", "<cmd>Telescope help_tags<CR>", noremap = true, desc = "Show help tags" },
-	},
 	config = function()
 		local actions = require("telescope.actions")
 		require("telescope").setup({
@@ -29,5 +22,12 @@ return {
 			},
 		})
 		require("telescope").load_extension("fzf")
+
+		local keymap = vim.keymap -- for conciseness
+		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Fuzzy string in cwd" })
+		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+		keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
+		keymap.set("n", "<leader>fn", "<cmd>Telescope help_tags<cr>", { desc = "Find help tags" })
 	end,
 }

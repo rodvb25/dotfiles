@@ -1,6 +1,5 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	cmd = "Telescope",
 	version = "v0.1.*",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -8,8 +7,10 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	config = function()
+		local telescope = require("telescope")
 		local actions = require("telescope.actions")
-		require("telescope").setup({
+
+		telescope.setup({
 			defaults = {
 				mappings = {
 					i = {
@@ -21,7 +22,7 @@ return {
 				},
 			},
 		})
-		require("telescope").load_extension("fzf")
+		telescope.load_extension("fzf")
 
 		local keymap = vim.keymap -- for conciseness
 		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })

@@ -1,16 +1,9 @@
 return {
 	"folke/zen-mode.nvim",
-	keys = {
-		{
-			"<leader>zm",
-			function()
-				require("zen-mode").toggle({
-					window = {
-						backdrop = 1,
-					},
-				})
-			end,
-			desc = "Zen Mode",
-		},
-	},
+	config = function()
+		local zenMode = require("zen-mode")
+		vim.keymap.set("n", "<leader>zm", function()
+			zenMode.toggle({ window = { backdrop = 1 } })
+		end, { noremap = true, silent = true })
+	end,
 }

@@ -4,11 +4,7 @@ return {
 		"windwp/nvim-ts-autotag",
 	},
 	build = ":TSUpdate",
-	event = "BufReadPost",
-	keys = {
-		{ "<c-space>", desc = "Increment selection" },
-		{ "<bs>", desc = "Increment selection", mode = "x" },
-	},
+	event = { "BufReadPre", "BufNewFile" },
 	opts = {
 		highlight = { enable = true },
 		sync_install = true,
@@ -38,7 +34,7 @@ return {
 				init_selection = "<C-space>",
 				node_incremental = "<C-space>",
 				scope_incremental = "<nop>",
-				node_decremential = "bs",
+				node_decremental = "<BS>",
 			},
 		},
 	},

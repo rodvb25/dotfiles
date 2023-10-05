@@ -1,6 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	version = "v0.1.*",
+	tag = "0.1.2",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
@@ -25,10 +25,11 @@ return {
 		telescope.load_extension("fzf")
 
 		local keymap = vim.keymap -- for conciseness
-		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Fuzzy string in cwd" })
-		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-		keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
-		keymap.set("n", "<leader>fn", "<cmd>Telescope help_tags<cr>", { desc = "Find help tags" })
+		local builtin = require("telescope.builtin")
+		keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in cwd" })
+		keymap.set("n", "<leader>fs", builtin.live_grep, { desc = "Fuzzy string in cwd" })
+		keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Find string under cursor in cwd" })
+		keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
+		keymap.set("n", "<leader>fn", builtin.help_tags, { desc = "Find help tags" })
 	end,
 }

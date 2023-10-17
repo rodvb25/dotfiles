@@ -8,8 +8,20 @@ return {
 	config = function()
 		local lspconfig = require("lspconfig")
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-		local servers =
-			{ "cssls", "html", "tsserver", "jsonls", "lua_ls", "rust_analyzer", "bashls", "clangd", "cmake", "lemminx" }
+		local servers = {
+			"cssls",
+			"html",
+			"tsserver",
+			"jsonls",
+			"lua_ls",
+			"rust_analyzer",
+			"bashls",
+			"clangd",
+			"cmake",
+			"lemminx",
+			"tailwindcss",
+			"prismals",
+		}
 
 		local keymap = vim.keymap
 		local opts = { noremap = true, silent = true }

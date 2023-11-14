@@ -10,9 +10,12 @@ return {
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool_installer = require("mason-tool-installer")
 
+		vim.keymap.set({ "n", "v" }, "<leader>ms", "<cmd>Mason<cr>", { desc = "Mason" })
+
 		mason.setup({
 			ui = {
-				height = 0.8,
+				border = "solid",
+				height = 0.7,
 			},
 		})
 
@@ -40,6 +43,7 @@ return {
 				"clang-format",
 				"xmlformatter",
 			},
+			auto_update = true,
 		})
 	end,
 }

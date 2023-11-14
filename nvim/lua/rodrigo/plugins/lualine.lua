@@ -1,10 +1,10 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	lazy = false,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
 	opts = {
+		-- extensions = { "lazy", "mason", "nvim-dap-ui", "trouble", "nvim-tree" },
 		sections = { -- show the number of pending updates in lazy
 			lualine_x = {
 				{

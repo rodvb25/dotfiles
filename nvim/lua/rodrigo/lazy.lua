@@ -13,7 +13,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("rodrigo.plugins", {
-	install = { colorscheme = { "tokyonight-night" } },
 	checker = { enabled = true, notify = false },
 	change_detection = { notify = false },
+	ui = {
+		size = { width = 0.7, height = 0.7 },
+		border = "solid",
+	},
 })

@@ -1,9 +1,10 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.2",
+	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
+		"nvim-telescope/telescope-ui-select.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	config = function()
@@ -12,6 +13,9 @@ return {
 
 		telescope.setup({
 			defaults = {
+				borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+				results_title = "",
+				prompt_title = "",
 				mappings = {
 					i = {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
@@ -23,6 +27,7 @@ return {
 			},
 		})
 		telescope.load_extension("fzf")
+		telescope.load_extension("ui-select")
 
 		local keymap = vim.keymap -- for conciseness
 		local builtin = require("telescope.builtin")

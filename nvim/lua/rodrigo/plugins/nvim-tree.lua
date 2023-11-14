@@ -2,7 +2,7 @@ return {
 	"nvim-tree/nvim-tree.lua",
 	version = "*",
 	keys = {
-		{ "<leader>e", ":NvimTreeToggle<cr>", silent = true, noremap = true, desc = "Open/close NvimTree" },
+		{ "<leader>e", "<cmd>NvimTreeToggle<cr>", silent = true, noremap = true, desc = "Open/close NvimTree" },
 	},
 	config = function()
 		local api = require("nvim-tree.api")
@@ -44,6 +44,11 @@ return {
 				api.tree.focus()
 			end
 
+			-- Automatically open file upon creation
+			api.events.subscribe(api.events.Event.FileCreated, function(file)
+				vim.cmd("edit" .. file.fname)
+			end)
+
 			vim.keymap.set("n", "l", edit_or_open, options("Edit Or Open"))
 			vim.keymap.set("n", "L", vsplit_preview, options("Vsplit Preview"))
 			vim.keymap.set("n", "h", api.node.navigate.parent_close, options("Close Directory"))
@@ -64,7 +69,7 @@ return {
 						local center_x = (screen_w - window_w) / 2
 						local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
 						return {
-							border = "rounded",
+							border = "solid",
 							relative = "editor",
 							row = center_y,
 							col = center_x,

@@ -1,5 +1,6 @@
 return {
 	"nvim-tree/nvim-tree.lua",
+	enabled = true,
 	version = "*",
 	keys = {
 		{ "<leader>e", "<cmd>NvimTreeToggle<cr>", silent = true, noremap = true, desc = "Open/close NvimTree" },
@@ -57,6 +58,7 @@ return {
 
 		require("nvim-tree").setup({
 			view = {
+				signcolumn = "auto",
 				float = {
 					enable = true,
 					open_win_config = function()

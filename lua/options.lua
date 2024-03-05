@@ -1,15 +1,16 @@
 -- :help options
 
+-- set leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- tabs & indentation
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
-vim.opt.smartcase = true
 
 -- cursor line
 vim.opt.cursorline = true
@@ -23,23 +24,32 @@ vim.opt.clipboard = "unnamedplus"
 -- appearance
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
+vim.opt.showmode = false
 
 -- line wrapping
 vim.opt.wrap = false
 
 -- search
 vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- file encoding
 vim.opt.fileencoding = "utf-8"
 
 -- scroll
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 6
 
 -- split windows
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
---nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- update time
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+
+-- Undo history
+vim.opt.undofile = true
+
+-- preview substitution live
+vim.opt.inccommand = "split"

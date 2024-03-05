@@ -9,9 +9,14 @@ return {
 		"hrsh7th/cmp-nvim-lua",
 		"saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind.nvim",
-		{ "windwp/nvim-autopairs", event = "InsertEnter", opts = {
-			check_ts = true,
-		} },
+		{
+			"windwp/nvim-autopairs",
+			-- enable = false,
+			event = "InsertEnter",
+			opts = {
+				check_ts = true,
+			},
+		},
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -29,7 +34,7 @@ return {
 			},
 			snippet = {
 				expand = function(args)
-					require("luasnip").lsp_expand(args.body)
+					luasnip.lsp_expand(args.body)
 				end,
 			},
 			-- Key mapping
@@ -66,8 +71,8 @@ return {
 
 			-- Snippets sources
 			sources = cmp.config.sources({
-				{ name = "luasnip" },
 				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
 				{ name = "nvim_lua" },
 				{ name = "buffer" },
 				{ name = "path" },
@@ -96,7 +101,7 @@ return {
 				entries = { name = "custom", selection_order = "near_cursor" },
 			},
 			-- autocompletion pairs
-			cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done()),
+			-- cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done()),
 
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),

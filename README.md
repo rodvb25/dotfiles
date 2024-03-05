@@ -11,9 +11,6 @@ My neovim configuration with support for:
 
 # Installation
 
-```bash
-git clone "https://github.com/rodvb25/nvim-config.git"
-cd nvim-config
-ln -s ${PWD}/nvim/ ~/.config
+```sh
+git clone https://github.com/rodvb25/nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
-This will not work if you already have a `./config/nvim` folder

@@ -2,19 +2,77 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-		"antosha417/nvim-lsp-file-operations",
-		"folke/neodev.nvim",
+		"saghen/blink.cmp",
+		{
+			"folke/lazydev.nvim",
+			ft = "lua",
+			opts = {
+				library = {
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
 		{
 			"williamboman/mason.nvim",
 			build = ":MasonUpdate",
-			dependencies = {
-				"williamboman/mason-lspconfig.nvim",
-				"WhoIsSethDaniel/mason-tool-installer.nvim",
+			config = function()
+				require("mason").setup({
+					ui = {
+						border = "solid",
+						height = 0.7,
+						icons = {
+							package_installed = "✓",
+							package_pending = "➜",
+							package_uninstalled = "✗",
+						},
+					},
+				})
+			end,
+		},
+	},
+	opts = {
+		servers = {
+			cssls = {},
+			html = {},
+			jsonls = {},
+			lua_ls = {
+				settings = {
+					Lua = {
+						hint = {
+							enable = true,
+						},
+						telemetry = {
+							enable = false,
+						},
+					},
+				},
+			},
+			bashls = {},
+			clangd = {},
+			cmake = {},
+			lemminx = {},
+			-- blueprint_ls = {},
+			glsl_analyzer = {
+				settings = {
+					filetype = {
+						"glsl",
+						"vert",
+						"tesc",
+						"tese",
+						"frag",
+						"geom",
+						"comp",
+					},
+				},
+			},
+			ols = {
+				init_options = {
+					enable_inlay_hints = true,
+				},
 			},
 		},
 	},
-	config = function()
+	config = function(_, opts)
 		local lspconfig = require("lspconfig")
 		local builtin = require("telescope.builtin")
 
@@ -37,46 +95,10 @@ return {
 			end,
 		})
 
-		-- setup capabilities
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
-		local servers = {
-			cssls = {},
-			html = {},
-			tsserver = {},
-			jsonls = {},
-			lua_ls = {
-				settings = {
-					Lua = {
-						completion = { --neodev config
-							callSnippet = "Replace",
-						},
-						runtime = {
-							version = "LuaJIT",
-						},
-						workspace = {
-							library = { vim.env.VIMRUNTIME .. "/lua" },
-							checkThirdParty = false, --stop luassert question
-						},
-						telemetry = {
-							enable = false,
-						},
-						library = {
-							"${3rd}/luv/library",
-							unpack(vim.api.nvim_get_runtime_file("", true)),
-						},
-					},
-				},
-			},
-			bashls = {},
-			clangd = {},
-			cmake = {},
-			lemminx = {},
-			-- blueprint_ls = {},
-			glsl_analyzer = {},
-			hls = {},
-		}
+		for server, config in pairs(opts.servers) do
+			config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+			lspconfig[server].setup(config)
+		end
 
 		lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
 			severity_sort = true,
@@ -86,45 +108,11 @@ return {
 				timeout_ms = nil,
 			},
 			diagnostic = {
-				update_in_insert = false,
+				update_in_insert = true,
 				virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
 				severity_sort = true,
 			},
-		})
-
-		-- setup mason
-		require("mason").setup({
-			ui = {
-				border = "solid",
-				height = 0.7,
-			},
-		})
-
-		local ensure_installed = vim.tbl_keys(servers or {})
-		vim.list_extend(ensure_installed, {
-			"prettier",
-			"stylua",
-			"eslint_d",
-			"luacheck",
-			"cpplint",
-			"cmakelint",
-			"clang-format",
-			"xmlformatter",
-		})
-
-		require("mason-tool-installer").setup({
-			ensure_installed = ensure_installed,
-			auto_update = true,
-		})
-
-		require("mason-lspconfig").setup({
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					lspconfig[server_name].setup(server)
-				end,
-			},
+			vim.lsp.inlay_hint.enable(true),
 		})
 
 		-- Change diagnostics symbols in the sign column

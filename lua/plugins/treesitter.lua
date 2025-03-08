@@ -7,26 +7,24 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	opts = {
 		highlight = { enable = true },
-		sync_install = true,
 		indent = { enable = true },
 		autotag = { enable = true },
 		auto_install = true,
 		ensure_installed = {
 			"json",
 			"javascript",
-			"typescript",
 			"html",
 			"css",
 			"markdown",
 			"markdown_inline",
 			"bash",
 			"lua",
-			"vim",
 			"gitignore",
-			"rust",
 			"c",
 			"vimdoc",
 			"regex",
+			"cpp",
+			"odin",
 		},
 		incremental_selection = {
 			enable = true,
@@ -38,4 +36,7 @@ return {
 			},
 		},
 	},
+	config = function(_, opts)
+		require("nvim-treesitter.configs").setup(opts)
+	end,
 }

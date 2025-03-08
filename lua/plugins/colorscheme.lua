@@ -1,15 +1,23 @@
 return {
 	{
-		"folke/tokyonight.nvim",
-		config = function()
-			vim.cmd("colorscheme tokyonight-night")
-		end,
+		-- "folke/tokyonight.nvim",
+		-- opts = {
+		-- 	plugins = {
+		-- 		auto = true,
+		-- 	},
+		-- 	style = "night",
+		-- },
+		-- config = function()
+		-- 	vim.cmd("colorscheme tokyonight-night")
+		-- end,
 	},
 	{
-		"Mofiqul/adwaita.nvim",
+		-- "sainnhe/everforest",
+		-- priority = 1000,
 		-- config = function()
-		-- 	-- vim.g.adwaita_darker = true
-		-- 	vim.cmd("colorscheme adwaita")
+		-- 	vim.g.everforest_enable_italic = true
+		-- 	vim.g.everforest_background = "hard"
+		-- 	vim.cmd("colorscheme everforest")
 		-- end,
 	},
 }

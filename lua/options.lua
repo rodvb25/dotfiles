@@ -38,7 +38,7 @@ vim.opt.smartcase = true
 vim.opt.fileencoding = "utf-8"
 
 -- scroll
-vim.opt.scrolloff = 6
+vim.opt.scrolloff = 4
 
 -- split windows
 vim.opt.splitright = true
@@ -53,3 +53,9 @@ vim.opt.undofile = true
 
 -- preview substitution live
 vim.opt.inccommand = "split"
+
+-- completion
+vim.opt.completeopt = "menu,menuone,preview,noselect,noinsert"
+
+-- colorscheme
+vim.api.nvim_set_hl(0, "VertSplit", { link = "NormalFloat" })

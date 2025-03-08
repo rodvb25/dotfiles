@@ -4,7 +4,6 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
-		"nvim-telescope/telescope-ui-select.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
@@ -34,7 +33,6 @@ return {
 
 		-- enable the extensions if they are installed
 		pcall(require("telescope").load_extension("fzf"))
-		pcall(require("telescope").load_extension("ui-select"))
 
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "Search files" })

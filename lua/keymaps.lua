@@ -43,5 +43,3 @@ keymap("t", "<leader>jk", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- diagnostics
 keymap("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
-keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })

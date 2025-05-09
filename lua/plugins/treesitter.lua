@@ -4,7 +4,6 @@ return {
 		"windwp/nvim-ts-autotag",
 	},
 	build = ":TSUpdate",
-	event = { "BufReadPre", "BufNewFile" },
 	opts = {
 		highlight = { enable = true },
 		indent = { enable = true },
@@ -25,6 +24,7 @@ return {
 			"regex",
 			"cpp",
 			"odin",
+			"xml",
 		},
 		incremental_selection = {
 			enable = true,

@@ -6,7 +6,7 @@ vim.g.maplocalleader = " "
 
 -- line numbers
 vim.opt.number = true
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 -- tabs & indentation
 vim.opt.expandtab = true
@@ -45,7 +45,7 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- update time
-vim.opt.updatetime = 250
+-- vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
 -- Undo history
@@ -58,4 +58,5 @@ vim.opt.inccommand = "split"
 vim.opt.completeopt = "menu,menuone,preview,noselect,noinsert"
 
 -- colorscheme
-vim.api.nvim_set_hl(0, "VertSplit", { link = "NormalFloat" })
+-- vim.api.nvim_set_hl(0, "VertSplit", { link = "NormalFloat" })
+-- vim.cmd("colorscheme retrobox")

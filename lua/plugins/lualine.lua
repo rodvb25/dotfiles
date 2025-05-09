@@ -3,8 +3,9 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
+	enabled = false,
 	opts = {
-		-- extensions = { "lazy", "mason", "nvim-dap-ui", "trouble", "nvim-tree" },
+		extensions = { "lazy", "mason", "trouble" },
 		sections = { -- show the number of pending updates in lazy
 			lualine_x = {
 				{

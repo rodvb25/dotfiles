@@ -1,6 +1,5 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"saghen/blink.cmp",
 		{
@@ -13,7 +12,7 @@ return {
 			},
 		},
 		{
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
 			build = ":MasonUpdate",
 			config = function()
 				require("mason").setup({

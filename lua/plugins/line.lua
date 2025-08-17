@@ -3,7 +3,7 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
-	enabled = false,
+	-- enabled = false,
 	opts = {
 		extensions = { "lazy", "mason", "trouble" },
 		sections = { -- show the number of pending updates in lazy

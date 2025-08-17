@@ -8,15 +8,19 @@ return {
 	},
 	version = "1.*",
 	opts = {
-		snippets = { preset = "luasnip" },
 		keymap = { preset = "enter" },
-		cmdline = {
-			keymap = { preset = "inherit" },
-			completion = {
-				menu = {
-					auto_show = true,
-				},
+		completion = {
+			ghost_text = {
+				enabled = true,
+				show_with_menu = false,
 			},
+		},
+		cmdline = {
+			keymap = {
+				["<Tab>"] = { "accept" },
+				["<CR>"] = { "accept_and_enter", "fallback" },
+			},
+			completion = { menu = { auto_show = true } },
 		},
 	},
 }

@@ -1,15 +1,8 @@
 # Neovim-config
 
-My neovim configuration with support for:
+My neovim configuration.
 
-* Autocompletion
-* LSP
-* Treesitter
-* Status Line
-* Fuzzy Finder
-* Git integration
-
-# Installation
+## Installation
 
 ```sh
 git clone https://github.com/rodvb25/nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim

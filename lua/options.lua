@@ -1,15 +1,12 @@
--- :help options
-
 -- set leader key
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 -- line numbers
 vim.opt.number = true
 -- vim.opt.relativenumber = true
 
 -- tabs & indentation
-vim.opt.expandtab = true
+-- vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 -- cursor line
@@ -24,10 +21,12 @@ vim.opt.clipboard = "unnamedplus"
 -- appearance
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
-vim.opt.showmode = false
+vim.opt.winborder = "solid"
+-- vim.opt.showmode = false
 
 -- line wrapping
 vim.opt.wrap = false
+vim.opt.textwidth = 120
 
 -- search
 vim.opt.hlsearch = true
@@ -52,7 +51,7 @@ vim.opt.timeoutlen = 300
 vim.opt.undofile = true
 
 -- preview substitution live
-vim.opt.inccommand = "split"
+-- vim.opt.inccommand = "split"
 
 -- completion
 vim.opt.completeopt = "menu,menuone,preview,noselect,noinsert"

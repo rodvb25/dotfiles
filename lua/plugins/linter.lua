@@ -2,14 +2,17 @@ return {
 	"mfussenegger/nvim-lint",
 	config = function()
 		local lint = require("lint")
+
+		require("lint").linters.luacheck.args = {
+			"--globals = vim",
+		}
+
 		lint.linters_by_ft = {
-			-- lua = { "luacheck" },
+			lua = { "luacheck" },
 			javascript = { "eslint_d" },
-			typescript = { "eslint_d" },
 			javascriptreact = { "eslint_d" },
-			typescriptreact = { "eslint_d" },
-			c = { "cpplint" },
-			cpp = { "cpplint" },
+			-- c = { "cpplint" },
+			-- cpp = { "cpplint" },
 			cmake = { "cmakelint" },
 		}
 

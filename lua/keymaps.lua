@@ -1,4 +1,3 @@
--- for conciseness
 local keymap = vim.keymap.set
 
 -- insert mode
@@ -26,11 +25,11 @@ keymap("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap("n", "<leader>q", "<C-W>c", { desc = "Close current window" })
 
 -- window size
-keymap("n", "<leader>Wj", "<C-W>-", { desc = "Decrease current window height" })
-keymap("n", "<leader>Wk", "<C-W>+", { desc = "Increase current window height" })
-keymap("n", "<leader>Wh", "<C-W><", { desc = "Decrease current window width" })
-keymap("n", "<leader>Wl", "<C-W>>", { desc = "Increase current window width" })
-keymap("n", "<leader>Wr", "<C-W>=", { desc = "Make all windows equally high and wide" })
+keymap("n", "<leader>wj", "<C-W>-", { desc = "Decrease current window height" })
+keymap("n", "<leader>wk", "<C-W>+", { desc = "Increase current window height" })
+keymap("n", "<leader>wh", "<C-W><", { desc = "Decrease current window width" })
+keymap("n", "<leader>wl", "<C-W>>", { desc = "Increase current window width" })
+keymap("n", "<leader>wr", "<C-W>=", { desc = "Make all windows equally high and wide" })
 
 -- tabs
 keymap("n", "<leader>to", "<cmd>tabnew<cr>", { desc = "Open new tab" })
@@ -43,3 +42,15 @@ keymap("t", "<leader>jk", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- diagnostics
 keymap("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
+
+-- lsp
+keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+keymap("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
+keymap("n", "gI", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+keymap("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Type definition" })
+keymap("n", "<leader>ds", vim.lsp.buf.document_symbol, { desc = "Document symbols" })
+keymap("n", "<leader>ws", vim.lsp.buf.workspace_symbol, { desc = "Workspace symbols" })
+keymap("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
+keymap("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+keymap("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
+keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })

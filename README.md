@@ -3,9 +3,6 @@
 - Neovim
 - Bash
 - Readline
+- Stow
 
-## Installation
-
-```sh
-git clone https://github.com/rodvb25/dotfiles.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
-```
+The symlinks are managed by Stow.

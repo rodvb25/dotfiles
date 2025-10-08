@@ -1,0 +1,8 @@
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
+set colored-stats on
+set colored-completion-prefix on 
+set editing-mode "vi"
+
+TAB: menu-complete
+"\e[Z":menu-complete-backward

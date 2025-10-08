@@ -23,8 +23,8 @@ return {
 	config = function()
 		vim.lsp.inlay_hint.enable(true)
 		vim.diagnostic.config({
-			virtual_text = true,
 			severity_sort = true,
+			virtual_text = { source = "if_many" },
 			signs = {
 				text = {
 					[vim.diagnostic.severity.ERROR] = "",
@@ -53,6 +53,7 @@ return {
 			"cssls",
 			"blueprint_ls",
 			"glsl_analyzer",
+			"stylua",
 		})
 
 		vim.lsp.config("lua_ls", {
@@ -61,6 +62,9 @@ return {
 					hint = { enable = true },
 					telemetry = { enable = false },
 					diagnostics = { globals = { "vim" } },
+					workspace = {
+						library = vim.api.nvim_get_runtime_file("", true),
+					},
 				},
 			},
 		})

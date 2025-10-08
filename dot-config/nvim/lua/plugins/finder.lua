@@ -18,8 +18,6 @@ return {
 		require("telescope").setup({
 			defaults = {
 				borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
-				results_title = "Results",
-				multi_icon = "",
 				mappings = {
 					i = {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
@@ -45,6 +43,6 @@ return {
 
 		vim.keymap.set("n", "<leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
-		end, { desc = "Search neovim files" })
+		end, { desc = "Search neovim config files" })
 	end,
 }

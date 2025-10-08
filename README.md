@@ -1,9 +1,11 @@
-# Neovim-config
+# My config files for:
 
-My neovim configuration.
+- Neovim
+- Bash
+- Readline
 
 ## Installation
 
 ```sh
-git clone https://github.com/rodvb25/nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone https://github.com/rodvb25/dotfiles.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```

@@ -23,7 +23,7 @@ vim.opt.signcolumn = "yes"
 
 -- line wrapping
 vim.opt.wrap = false
-vim.opt.textwidth = 120
+vim.opt.textwidth = 100
 
 -- search
 vim.opt.hlsearch = true
@@ -48,7 +48,7 @@ vim.opt.timeoutlen = 300
 vim.opt.undofile = true
 
 -- completion
-vim.opt.completeopt = "menu,menuone,preview,noselect,noinsert,fuzzy"
+vim.opt.completeopt = "menu,menuone,popup,noselect,fuzzy"
 
 -- before exiting with unsaved files
 vim.opt.confirm = true

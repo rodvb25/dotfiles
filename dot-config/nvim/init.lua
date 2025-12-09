@@ -1,5 +1,6 @@
 require("options")
 require("keymaps")
+vim.cmd("colorscheme retrobox")
 
 -- Setup the plugin manager, Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -27,3 +28,4 @@ require("lazy").setup({
 		border = "solid",
 	},
 })
+

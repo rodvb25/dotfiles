@@ -1,7 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"saghen/blink.cmp",
 		{
 			"mason-org/mason.nvim",
 			build = ":MasonUpdate",
@@ -51,26 +50,19 @@ return {
 			"jsonls",
 			"html",
 			"cssls",
-			"blueprint_ls",
+			-- "blueprint_ls",
 			"glsl_analyzer",
 			"stylua",
+			"slangd",
 		})
 
 		vim.lsp.config("lua_ls", {
 			settings = {
 				Lua = {
-					hint = { enable = true },
-					telemetry = { enable = false },
-					diagnostics = { globals = { "vim" } },
 					workspace = {
-						library = vim.api.nvim_get_runtime_file("", true),
+						library = { vim.env.VIMRUNTIME },
 					},
 				},
-			},
-		})
-		vim.lsp.config("ols", {
-			init_options = {
-				enable_inlay_hints = true,
 			},
 		})
 	end,
